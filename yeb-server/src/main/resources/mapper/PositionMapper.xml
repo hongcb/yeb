@@ -3,7 +3,7 @@
 <mapper namespace="com.xxxx.mapper.PositionMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.xxxx.pojo.Position">
+    <resultMap id="BaseResultMap" type="com.xxxx.server.pojo.Position">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="createDate" property="createDate" />

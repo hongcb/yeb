@@ -3,7 +3,7 @@
 <mapper namespace="com.xxxx.mapper.EmployeeTrainMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.xxxx.pojo.EmployeeTrain">
+    <resultMap id="BaseResultMap" type="com.xxxx.server.pojo.EmployeeTrain">
         <id column="id" property="id" />
         <result column="eid" property="eid" />
         <result column="trainDate" property="trainDate" />

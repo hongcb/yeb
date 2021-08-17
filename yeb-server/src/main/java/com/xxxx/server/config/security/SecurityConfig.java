@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,6 +38,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    /**
+     *
+     *需要放行的资源
+     * @author hongcb
+     * @date 2021/8/17 16:24
+     * @return void
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(
+                "/login",
+                "/logout",
+                "/ws/**",
+                "/css/**",
+                "/js/**",
+                "/index.html",
+                "favicon.ico",
+                "/doc.html",
+                "/webjars/**",
+                "/swagger-resources/**",
+                "/v2/api-docs/**",
+                "/captcha"
+        );
+    }
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //使用JWT，不需要csrf

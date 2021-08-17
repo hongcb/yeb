@@ -3,7 +3,7 @@
 <mapper namespace="com.xxxx.mapper.SalaryAdjustMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.xxxx.pojo.SalaryAdjust">
+    <resultMap id="BaseResultMap" type="com.xxxx.server.pojo.SalaryAdjust">
         <id column="id" property="id" />
         <result column="eid" property="eid" />
         <result column="asDate" property="asDate" />

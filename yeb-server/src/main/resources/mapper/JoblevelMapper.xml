@@ -3,7 +3,7 @@
 <mapper namespace="com.xxxx.mapper.JoblevelMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.xxxx.pojo.Joblevel">
+    <resultMap id="BaseResultMap" type="com.xxxx.server.pojo.Joblevel">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="titleLevel" property="titleLevel" />

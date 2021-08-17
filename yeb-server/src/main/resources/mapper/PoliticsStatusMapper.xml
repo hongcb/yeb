@@ -3,7 +3,7 @@
 <mapper namespace="com.xxxx.mapper.PoliticsStatusMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.xxxx.pojo.PoliticsStatus">
+    <resultMap id="BaseResultMap" type="com.xxxx.server.pojo.PoliticsStatus">
         <id column="id" property="id" />
         <result column="name" property="name" />
     </resultMap>

@@ -3,7 +3,7 @@
 <mapper namespace="com.xxxx.mapper.SysMsgMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.xxxx.pojo.SysMsg">
+    <resultMap id="BaseResultMap" type="com.xxxx.server.pojo.SysMsg">
         <id column="id" property="id" />
         <result column="mid" property="mid" />
         <result column="type" property="type" />

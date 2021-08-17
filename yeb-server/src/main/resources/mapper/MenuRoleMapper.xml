@@ -3,7 +3,7 @@
 <mapper namespace="com.xxxx.mapper.MenuRoleMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.xxxx.pojo.MenuRole">
+    <resultMap id="BaseResultMap" type="com.xxxx.server.pojo.MenuRole">
         <id column="id" property="id" />
         <result column="mid" property="mid" />
         <result column="rid" property="rid" />

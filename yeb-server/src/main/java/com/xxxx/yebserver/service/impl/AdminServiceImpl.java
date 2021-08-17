@@ -1,7 +1,8 @@
 package com.xxxx.yebserver.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xxxx.yebserver.config.JwtTokenUtil;
+import com.xxxx.yebserver.config.jwt.JwtTokenUtil;
 import com.xxxx.yebserver.mapper.AdminMapper;
 import com.xxxx.yebserver.pojo.Admin;
 import com.xxxx.yebserver.pojo.RespBean;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +32,8 @@ import java.util.Map;
 @Service
 public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements IAdminService {
 
+    @Autowired
+    private AdminMapper adminMapper;
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
@@ -58,5 +62,10 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
         return RespBean.success("登录成功", tokenMap);
+    }
+
+    @Override
+    public Admin getAdminByUserName(String username) {
+        return adminMapper.selectOne(new QueryWrapper<Admin>().eq("username",username));
     }
 }

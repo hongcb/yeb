@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 public interface IAdminService extends IService<Admin> {
 
     /**
-     *
      * 登陆返回token
      * @param username 用户名
      * @param password 密码
@@ -28,4 +27,12 @@ public interface IAdminService extends IService<Admin> {
      */
     RespBean login(String username, String password, HttpServletRequest request);
 
+    /**
+     *
+     *根据用户名获取用户信息
+     * @author hongcb
+     * @date 2021/8/17 10:30 
+     * @return com.xxxx.yebserver.pojo.Admin
+     */
+    Admin getAdminByUserName(String username);
 }

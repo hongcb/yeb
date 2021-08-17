@@ -1,4 +1,4 @@
-package com.xxxx.yebserver.config;
+package com.xxxx.yebserver.config.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

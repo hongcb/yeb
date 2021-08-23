@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * TODO
+ * swagger测试控制器
  *
  * @author hongcb
  * @version 1.0

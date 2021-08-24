@@ -45,7 +45,8 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Override
     public RespBean login(String username, String password, HttpServletRequest request) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        if(null == userDetails  || passwordEncoder.matches(password,userDetails.getPassword())){
+        if(null == userDetails
+                || !passwordEncoder.matches(password,userDetails.getPassword())){
             return RespBean.error("用户名或者密码不正确");
         }
         if(!userDetails.isEnabled()){

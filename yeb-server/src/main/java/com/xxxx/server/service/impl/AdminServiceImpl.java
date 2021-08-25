@@ -43,10 +43,9 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     private String tokenHead;
 
     @Override
-    public RespBean login(String username, String password, HttpServletRequest request) {
+    public RespBean login(String username, String password, String code, HttpServletRequest request) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        if(null == userDetails
-                || !passwordEncoder.matches(password,userDetails.getPassword())){
+        if(null == userDetails || !passwordEncoder.matches(password,userDetails.getPassword())){
             return RespBean.error("用户名或者密码不正确");
         }
         if(!userDetails.isEnabled()){

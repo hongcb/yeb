@@ -20,12 +20,13 @@ public interface IAdminService extends IService<Admin> {
      * 登陆返回token
      * @param username 用户名
      * @param password 密码
+     * @param code 验证码
      * @param request  http
      * @author hongcb
      * @date 2021/8/16 14:18
      * @return com.xxxx.yebserver.pojo.RespBean
      */
-    RespBean login(String username, String password, HttpServletRequest request);
+    RespBean login(String username, String password, String code, HttpServletRequest request);
 
     /**
      *

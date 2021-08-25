@@ -1,6 +1,7 @@
 package com.xxxx.server.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xxxx.server.config.jwt.JwtTokenUtil;
 import com.xxxx.server.mapper.AdminMapper;
@@ -16,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +33,7 @@ import java.util.Map;
 @Service
 public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements IAdminService {
 
-    @Autowired
+    @Resource
     private AdminMapper adminMapper;
     @Autowired
     private UserDetailsService userDetailsService;
@@ -45,6 +47,11 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Override
     public RespBean login(String username, String password, String code, HttpServletRequest request) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        //从session中获取验证码
+        String captcha = (String)request.getSession().getAttribute("captcha");
+        if(StringUtils.isBlank(code) || !captcha.equalsIgnoreCase(code)){
+            return RespBean.error("验证码不正确，请重新输入");
+        }
         if(null == userDetails || !passwordEncoder.matches(password,userDetails.getPassword())){
             return RespBean.error("用户名或者密码不正确");
         }

@@ -1,6 +1,7 @@
 package com.xxxx.server.controller;
 
 
+import com.xxxx.server.config.redis.RedisConfig;
 import com.xxxx.server.pojo.Menu;
 import com.xxxx.server.service.IMenuService;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +26,7 @@ public class MenuController {
 
     @Autowired
     private IMenuService menuService;
+
 
     @ApiOperation(value = "通过用户id获取菜单列表")
     @GetMapping("/menu")

@@ -2,7 +2,6 @@ package com.xxxx.server.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xxxx.server.config.redis.RedisConfig;
 import com.xxxx.server.mapper.MenuMapper;
 import com.xxxx.server.pojo.Admin;
 import com.xxxx.server.pojo.Menu;
@@ -47,5 +46,15 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
             redisTemplate.opsForValue().set("menu_" + adminId,menus);
         }
         return menus;
+    }
+
+    /**
+     * 通过角色获取菜单列表
+     *
+     * @return
+     */
+    @Override
+    public List<Menu> getAllMenusWithRole() {
+        return menuMapper.getAllMenusWithRole();
     }
 }

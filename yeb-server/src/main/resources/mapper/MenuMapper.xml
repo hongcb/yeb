@@ -62,4 +62,24 @@
             AND ar.adminId=#{id}
             AND m2.enabled = TRUE
     </select>
+
+    <!--通过角色获取菜单列表-->
+    <select id="getAllMenusWithRole" resultMap="BaseResultMap">
+        select
+            m.*,
+            r.id as rid,
+            r.`name` as rname,
+            r.nameZh as rnameZh
+        from
+            t_menu m,
+            t_menu_role mr,
+            t_role r
+        where
+            m.id = mr.mid
+            and mr.rid = r.id
+        order by
+            m.id
+    </select>
+
+
 </mapper>
